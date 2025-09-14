@@ -31,13 +31,16 @@ public class MahouPhantasm {
     public MahouPhantasm(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
 
-        //// Registering mod things
+        // Registering mod things
         MahouItems.register(modEventBus);
         MahouBlocks.register(modEventBus);
         MahouCreativeTabs.register(modEventBus);
         MahouSpells.register(modEventBus);
         MahouSchools.register(modEventBus);
         MahouSounds.register(modEventBus);
+//        MahouFluids.register();
+
+        // ISSAlchemistCauldronRegistrar.register(modEventBus);
 
 
         // Register the commonSetup method for modloading

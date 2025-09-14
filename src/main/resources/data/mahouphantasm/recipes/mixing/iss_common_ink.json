@@ -1,0 +1,21 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "minecraft:amethyst_shard"
+    },
+    {
+      "item": "minecraft:glow_ink_sac"
+    },
+    {
+      "amount": 250,
+      "fluidTag": "supplementaries:lumisene"
+    }
+  ],
+  "results": [
+    {
+      "item": "irons_spellbooks:common_ink"
+    }
+  ]
+}

@@ -215,16 +215,17 @@ public class UpstandingSlashSpell extends AbstractSpell {
                 double r = rel.dot(right);                  // right projection
                 double u = rel.dot(up);                     // up projection
 
-                // if in hitbox
+                // is it exactly in the hitbox
                 if (Math.abs(f) <= LENGTH / 2.0 &&
                         Math.abs(r) <= WIDTH / 2.0 &&
                         Math.abs(u) <= HEIGHT / 2.0) {
 
+                    // if in hitbox
                     e.hurt(level.damageSources().mobAttack(caster), damage);
                     MagicManager.spawnParticles(level, ParticleHelper.BLOOD,
                             e.getX(),
                             e.getY() + e.getBbHeight() * 0.5,
-                            e.getZ(), 30,
+                            e.getZ(), 50,
                             e.getBbWidth() * 0.5,
                             e.getBbHeight() * 0.5,
                             e.getBbWidth() * 0.5,
