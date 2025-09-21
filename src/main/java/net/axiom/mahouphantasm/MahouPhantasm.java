@@ -2,6 +2,7 @@ package net.axiom.mahouphantasm;
 
 import com.mojang.logging.LogUtils;
 import net.axiom.mahouphantasm.block.MahouBlocks;
+import net.axiom.mahouphantasm.debug.AnimationDebug;
 import net.axiom.mahouphantasm.item.MahouCreativeTabs;
 import net.axiom.mahouphantasm.item.MahouItems;
 import net.axiom.mahouphantasm.registries.MahouSounds;
@@ -24,7 +25,6 @@ import org.slf4j.Logger;
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(MahouPhantasm.MOD_ID)
 public class MahouPhantasm {
-    // Define mod id in a common place for everything to reference
     public static final String MOD_ID = "mahouphantasm";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -51,8 +51,6 @@ public class MahouPhantasm {
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
-
-        // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -75,10 +73,10 @@ public class MahouPhantasm {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
+            AnimationDebug.checkAnimations();
         }
     }
     public static ResourceLocation id(@NotNull String path) {
-        return ResourceLocation.fromNamespaceAndPath("mahouphantasm", path);
+        return ResourceLocation.fromNamespaceAndPath(MahouPhantasm.MOD_ID, path);
     }
 }

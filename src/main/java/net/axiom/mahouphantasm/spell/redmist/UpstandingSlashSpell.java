@@ -13,6 +13,7 @@ import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.axiom.mahouphantasm.MahouPhantasm;
 import net.axiom.mahouphantasm.registries.MahouSounds;
+import net.axiom.mahouphantasm.spell.MSpellAnimations;
 import net.axiom.mahouphantasm.spell.MahouSchools;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -52,7 +53,7 @@ public class UpstandingSlashSpell extends AbstractSpell {
         this.manaCostPerLevel = 15;
         this.baseSpellPower = 12;
         this.spellPowerPerLevel = 4;
-        this.castTime = 20;
+        this.castTime = 21;
         this.baseManaCost = 70;
     }
 
@@ -126,12 +127,12 @@ public class UpstandingSlashSpell extends AbstractSpell {
 
     @Override
     public AnimationHolder getCastStartAnimation() {
-        return SpellAnimations.OVERHEAD_MELEE_SWING_ANIMATION;
+        return MSpellAnimations.MIMICRY_UPSWING;  // was SpellAnimations.OVERHEAD_MELEE_SWING_ANIMATION;
     }
 
     @Override
     public AnimationHolder getCastFinishAnimation() {
-        return AnimationHolder.pass();
+        return MSpellAnimations.MIMICRY_SLASH;
     }
 
     @Override
