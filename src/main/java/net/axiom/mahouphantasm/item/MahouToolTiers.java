@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 public enum MahouToolTiers implements Tier {
     DRAGONSLAYER(3, 2000, -2.7f, 17, 8, () -> Ingredient.of(Items.NETHERITE_SCRAP)),
     WATERLOOSABER(3, 1100, -1.5f, 8, 15, () -> Ingredient.of(ForgeRegistries.ITEMS.getValue(new ResourceLocation("ironsspellbooks", "arcane_salvage")))),
-    MIMICRY(3, 3000, -1.5f, 12, 3, () -> Ingredient.of(Items.NETHERITE_SCRAP))
+    MIMICRY(3, 3000, -1.5f, 9, 3, () -> Ingredient.of(MahouItems.MIMICRYPART.get()))
     ;
 
     private final int level;

@@ -2,7 +2,6 @@ package net.axiom.mahouphantasm;
 
 import com.mojang.logging.LogUtils;
 import net.axiom.mahouphantasm.block.MahouBlocks;
-import net.axiom.mahouphantasm.debug.AnimationDebug;
 import net.axiom.mahouphantasm.item.MahouCreativeTabs;
 import net.axiom.mahouphantasm.item.MahouItems;
 import net.axiom.mahouphantasm.registries.MahouSounds;
@@ -73,7 +72,7 @@ public class MahouPhantasm {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            AnimationDebug.checkAnimations();
+//            AnimationDebug.checkAnimations();
         }
     }
     public static ResourceLocation id(@NotNull String path) {

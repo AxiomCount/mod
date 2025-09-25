@@ -10,6 +10,7 @@ public class MSpellAnimations {
 
     public static final AnimationHolder MIMICRY_UPSWING = new AnimationHolder(MahouPhantasm.MOD_ID + ":mimicry_upswing", true);
     public static final AnimationHolder MIMICRY_SLASH = new AnimationHolder(MahouPhantasm.MOD_ID + ":mimicry_slash", true);
+    public static final AnimationHolder SIMPLE_SWORD_UPWARD = new AnimationHolder(MahouPhantasm.MOD_ID + ":sword_upward", true);
 
     public MSpellAnimations() {
     }

@@ -3,7 +3,8 @@ package net.axiom.mahouphantasm.spell;
 import io.redspace.ironsspellbooks.api.registry.SpellRegistry;
 import io.redspace.ironsspellbooks.api.spells.AbstractSpell;
 import net.axiom.mahouphantasm.MahouPhantasm;
-import net.axiom.mahouphantasm.spell.redmist.UpstandingSlashSpell;
+import net.axiom.mahouphantasm.spell.blood.*;
+import net.axiom.mahouphantasm.spell.redmist.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -17,6 +18,7 @@ public class MahouSpells {
     }
 
     public static final RegistryObject<AbstractSpell> UPSTANDINGSLASH = registerSpell(new UpstandingSlashSpell());
+    public static final RegistryObject<AbstractSpell> BLOODBOIL = registerSpell(new BloodBoilSpell());
 
 
 //    public static final RegistryObject<AbstractSpell> REDMIST1 =

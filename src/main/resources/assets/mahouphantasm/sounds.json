@@ -1,10 +1,17 @@
 {
   "spells.dice": {
     "sounds": [
-      {
-        "name": "mahouphantasm:spells/dice",
-        "stream": false
-      }
+        "mahouphantasm:spells/dice"
+    ]
+  },
+  "spells.blood_boil_explosion": {
+    "sounds": [
+      "mahouphantasm:spells/blood_boil_explosion"
+    ]
+  },
+  "spells.blood_boil_steam": {
+    "sounds": [
+      "mahouphantasm:spells/blood_boil_steam"
     ]
   }
 }

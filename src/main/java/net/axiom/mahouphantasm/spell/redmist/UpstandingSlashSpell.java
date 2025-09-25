@@ -137,12 +137,12 @@ public class UpstandingSlashSpell extends AbstractSpell {
 
     @Override
     public void onCast(Level level, int spellLevel, LivingEntity caster, CastSource castSource, MagicData playerMagicData) {
-        // Recasts (thanks cataclysm spellbooks dev)
-        if (!playerMagicData.getPlayerRecasts().hasRecastForSpell(getSpellId()))
+        if (!playerMagicData.getPlayerRecasts().hasRecastForSpell(getSpellId()) & playerMagicData.getMana() > this.baseManaCost + (this.manaCostPerLevel * (spellLevel - 1)))
         {
             playerMagicData.getPlayerRecasts().addRecast
                     (new RecastInstance(getSpellId(), spellLevel, getRecastCount(spellLevel, caster),
                             60, castSource, null), playerMagicData);
+
         }
 
         final double LENGTH = 4.0;
