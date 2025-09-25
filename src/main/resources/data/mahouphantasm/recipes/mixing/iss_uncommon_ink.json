@@ -1,0 +1,30 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "minecraft:copper_ingot"
+    },
+    {
+      "item": "irons_spellbooks:common_ink"
+    },
+    {
+      "item": "irons_spellbooks:common_ink"
+    },
+    {
+      "item": "irons_spellbooks:common_ink"
+    },
+    {
+      "item": "irons_spellbooks:common_ink"
+    },
+    {
+      "amount": 250,
+      "fluidTag": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "irons_spellbooks:uncommon_ink"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "irons_spellbooks:uncommon_ink"
+    },
+    {
+      "item": "irons_spellbooks:uncommon_ink"
+    },
+    {
+      "item": "irons_spellbooks:uncommon_ink"
+    },
+    {
+      "item": "irons_spellbooks:uncommon_ink"
+    },
+    {
+      "amount": 250,
+      "fluidTag": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "irons_spellbooks:rare_ink"
+    }
+  ]
+}

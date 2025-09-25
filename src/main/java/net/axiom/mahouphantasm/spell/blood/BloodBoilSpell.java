@@ -68,9 +68,7 @@ public class BloodBoilSpell extends AbstractSpell {
     }
 
     @Override
-    public boolean canBeCraftedBy(Player player) {
-        return true;
-    }
+    public boolean canBeCraftedBy(Player player) {return false; }
 
     @Override
     public boolean allowLooting() {
