@@ -17,7 +17,7 @@
 //import net.minecraft.network.chat.MutableComponent;
 //import net.minecraft.resources.ResourceLocation;
 //import net.minecraft.sounds.SoundEvent;
-//import net.minecraft.world.effect.MobEffect;
+//import net.minecraft.world.effect.MahouEffects;
 //import net.minecraft.world.effect.MobEffectInstance;
 //import net.minecraft.world.entity.LivingEntity;
 //import net.minecraft.world.level.Level;
@@ -61,7 +61,7 @@
 //    }
 //
 //    public void onCast(Level world, int spellLevel, LivingEntity entity, CastSource castSource, MagicData playerMagicData) {
-//        entity.addEffect(new MobEffectInstance((MobEffect)MobEffectRegistry.HEARTSTOP.get(), (int)this.getSpellPower(spellLevel, entity), 0, false, false, true));
+//        entity.addEffect(new MobEffectInstance((MahouEffects)MobEffectRegistry.HEARTSTOP.get(), (int)this.getSpellPower(spellLevel, entity), 0, false, false, true));
 //        super.onCast(world, spellLevel, entity, castSource, playerMagicData);
 //    }
 //}

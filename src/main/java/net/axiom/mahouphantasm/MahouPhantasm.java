@@ -5,6 +5,7 @@ import net.axiom.mahouphantasm.block.MahouBlocks;
 import net.axiom.mahouphantasm.item.MahouCreativeTabs;
 import net.axiom.mahouphantasm.item.MahouItems;
 import net.axiom.mahouphantasm.registries.MahouSounds;
+import net.axiom.mahouphantasm.registries.MahouEffects;
 import net.axiom.mahouphantasm.spell.MahouSchools;
 import net.axiom.mahouphantasm.spell.MahouSpells;
 import net.minecraft.resources.ResourceLocation;
@@ -37,6 +38,7 @@ public class MahouPhantasm {
         MahouSpells.register(modEventBus);
         MahouSchools.register(modEventBus);
         MahouSounds.register(modEventBus);
+        MahouEffects.register(modEventBus);
 //        MahouFluids.register();
 
         // ISSAlchemistCauldronRegistrar.register(modEventBus);
