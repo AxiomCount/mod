@@ -15,12 +15,16 @@ public class MahouSounds {
     public static final RegistryObject<SoundEvent> DICE =
             SOUND_EVENTS.register("spells.dice",
                     () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(MahouPhantasm.MOD_ID, "spells.dice")));
+
     public static final RegistryObject<SoundEvent> BLOOD_BOIL_EXPLOSION =
             SOUND_EVENTS.register("spells.blood_boil_explosion",
                     () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(MahouPhantasm.MOD_ID, "spells.blood_boil_explosion")));
     public static final RegistryObject<SoundEvent> BLOOD_BOIL_STEAM =
             SOUND_EVENTS.register("spells.blood_boil_steam",
                     () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(MahouPhantasm.MOD_ID, "spells.blood_boil_steam")));
+    public static final RegistryObject<SoundEvent> BLOOD_BOIL_BUBBLES =
+            SOUND_EVENTS.register("spells.blood_boil_bubbles",
+                    () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(MahouPhantasm.MOD_ID, "spells.blood_boil_bubbles")));
 
 
 

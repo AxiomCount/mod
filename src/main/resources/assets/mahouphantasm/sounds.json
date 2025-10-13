@@ -13,5 +13,10 @@
     "sounds": [
       "mahouphantasm:spells/blood_boil_steam"
     ]
+  },
+  "spells.blood_boil_bubbles": {
+    "sounds": [
+      "mahouphantasm:spells/blood_boil_bubbles"
+    ]
   }
 }
