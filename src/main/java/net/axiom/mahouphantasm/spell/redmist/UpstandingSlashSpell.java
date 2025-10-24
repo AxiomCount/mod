@@ -1,5 +1,6 @@
 package net.axiom.mahouphantasm.spell.redmist;
 
+import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
 import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.registry.SchoolRegistry;
@@ -8,10 +9,12 @@ import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
 import io.redspace.ironsspellbooks.capabilities.magic.RecastInstance;
+import io.redspace.ironsspellbooks.entity.spells.flame_strike.FlameStrike;
 import io.redspace.ironsspellbooks.registries.MobEffectRegistry;
 import io.redspace.ironsspellbooks.registries.SoundRegistry;
 import io.redspace.ironsspellbooks.util.ParticleHelper;
 import net.axiom.mahouphantasm.MahouPhantasm;
+import net.axiom.mahouphantasm.entity.spells.redmist_slash.RedmistSlash;
 import net.axiom.mahouphantasm.registries.MahouSounds;
 import net.axiom.mahouphantasm.spell.MSpellAnimations;
 import net.axiom.mahouphantasm.spell.MahouSchools;
@@ -149,57 +152,55 @@ public class UpstandingSlashSpell extends AbstractSpell {
         final double WIDTH = 1.5;
         final double HEIGHT = 2.5;
         float damage = getSpellPower(spellLevel, caster);
+        Vec3 casterMid = caster.position().add(0, caster.getBbHeight() * 0.5, 0);
+        Vec3 forward = caster.getLookAngle().normalize();
+        Vec3 hitboxCenter = casterMid.add(forward.scale(LENGTH / 2.0));
 
+        Vec3 worldUp = new Vec3(0, 1, 0);
+        Vec3 right = forward.cross(worldUp);
+        // if looking precisely up or down use X vec
+        if (right.lengthSqr() < 1e-6) {
+            right = forward.cross(new Vec3(1, 0, 0));
+        }
+        right = right.normalize();
+        Vec3 up = right.cross(forward).normalize();
 
-        if (!level.isClientSide) {
-            Vec3 casterMid = caster.position().add(0, caster.getBbHeight() * 0.5, 0);
-            Vec3 forward = caster.getLookAngle().normalize();
-            Vec3 hitboxCenter = casterMid.add(forward.scale(LENGTH / 2.0)); // center of the hitbox
+        AABB searchBox = caster.getBoundingBox().inflate(LENGTH*2, HEIGHT*2, LENGTH*2);
 
-            Vec3 worldUp = new Vec3(0, 1, 0);
-            Vec3 right = forward.cross(worldUp);
-            // if looking precisely up or down use X vec
-            if (right.lengthSqr() < 1e-6) {
-                right = forward.cross(new Vec3(1, 0, 0));
-            }
-            right = right.normalize();
-            Vec3 up = right.cross(forward).normalize();
+        List<LivingEntity> candidates = level.getEntitiesOfClass(
+                LivingEntity.class,
+                searchBox,
+                e -> e != caster && e.isAlive() && e.isPickable()
+        );
 
-            AABB searchBox = caster.getBoundingBox().inflate(LENGTH*2, HEIGHT*2, LENGTH*2);
+        for (LivingEntity e : candidates) {
+            // (e.getBbHeight() * 0.5)  is a target Y center
+            Vec3 targetPos = e.position().add(0, e.getBbHeight() * 0.5, 0);
 
-            List<LivingEntity> candidates = level.getEntitiesOfClass(
-                    LivingEntity.class,
-                    searchBox,
-                    e -> e != caster && e.isAlive() && e.isPickable()
-            );
+            Vec3 rel = targetPos.subtract(hitboxCenter);      // vector from hitbox center to target
+            double f = rel.dot(forward);                // forward projection
+            double r = rel.dot(right);                  // right projection
+            double u = rel.dot(up);                     // up projection
 
-            for (LivingEntity e : candidates) {
-                // (e.getBbHeight() * 0.5)  is a target Y center
-                Vec3 targetPos = e.position().add(0, e.getBbHeight() * 0.5, 0);
+            // is it exactly in the hitbox
+            if (Math.abs(f) <= LENGTH / 2.0 &&
+                    Math.abs(r) <= WIDTH / 2.0 &&
+                    Math.abs(u) <= HEIGHT / 2.0) {
 
-                Vec3 rel = targetPos.subtract(hitboxCenter);      // vector from hitbox center to target
-                double f = rel.dot(forward);                // forward projection
-                double r = rel.dot(right);                  // right projection
-                double u = rel.dot(up);                     // up projection
-
-                // is it exactly in the hitbox
-                if (Math.abs(f) <= LENGTH / 2.0 &&
-                        Math.abs(r) <= WIDTH / 2.0 &&
-                        Math.abs(u) <= HEIGHT / 2.0) {
-
-                    // if in hitbox
-                    e.hurt(level.damageSources().mobAttack(caster), damage);
-                    MagicManager.spawnParticles(level, ParticleHelper.BLOOD,
-                            e.getX(),
-                            e.getY() + e.getBbHeight() * 0.5,
-                            e.getZ(), 50,
-                            e.getBbWidth() * 0.5,
-                            e.getBbHeight() * 0.5,
-                            e.getBbWidth() * 0.5,
-                            0.03, false
-                    );
-                }
+                // if in hitbox
+                e.hurt(level.damageSources().mobAttack(caster), damage);
+                MagicManager.spawnParticles(level, ParticleHelper.BLOOD,
+                        e.getX(),
+                        e.getY() + e.getBbHeight() * 0.5,
+                        e.getZ(), 50,
+                        e.getBbWidth() * 0.5,
+                        e.getBbHeight() * 0.5,
+                        e.getBbWidth() * 0.5,
+                        0.03, false
+                );
             }
         }
     }
 }
+
+

@@ -2,6 +2,7 @@ package net.axiom.mahouphantasm;
 
 import com.mojang.logging.LogUtils;
 import net.axiom.mahouphantasm.block.MahouBlocks;
+import net.axiom.mahouphantasm.entity.MahouEntityRegistry;
 import net.axiom.mahouphantasm.item.MahouCreativeTabs;
 import net.axiom.mahouphantasm.item.MahouItems;
 import net.axiom.mahouphantasm.registries.MahouSounds;
@@ -31,7 +32,6 @@ public class MahouPhantasm {
     public MahouPhantasm(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
 
-        // Registering mod things
         MahouItems.register(modEventBus);
         MahouBlocks.register(modEventBus);
         MahouCreativeTabs.register(modEventBus);
@@ -39,6 +39,7 @@ public class MahouPhantasm {
         MahouSchools.register(modEventBus);
         MahouSounds.register(modEventBus);
         MahouEffects.register(modEventBus);
+        MahouEntityRegistry.register(modEventBus);
 //        MahouFluids.register();
 
         // ISSAlchemistCauldronRegistrar.register(modEventBus);
