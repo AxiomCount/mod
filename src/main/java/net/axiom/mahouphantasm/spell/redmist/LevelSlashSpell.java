@@ -1,9 +1,9 @@
 package net.axiom.mahouphantasm.spell.redmist;
 
-import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
-import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.config.DefaultConfig;
 import io.redspace.ironsspellbooks.api.magic.MagicData;
+import io.redspace.ironsspellbooks.api.magic.SpellSelectionManager;
+import io.redspace.ironsspellbooks.api.spells.*;
 import io.redspace.ironsspellbooks.api.util.AnimationHolder;
 import io.redspace.ironsspellbooks.api.util.Utils;
 import io.redspace.ironsspellbooks.capabilities.magic.MagicManager;
@@ -23,15 +23,15 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Optional;
 
 @AutoSpellConfig
-public class UpstandingSlashSpell extends AbstractSpell {
+public class LevelSlashSpell extends AbstractSpell {
     private static final ResourceLocation SPELL_ID = new ResourceLocation(MahouPhantasm.MOD_ID, "upstanding_slash");
 
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
@@ -48,7 +48,7 @@ public class UpstandingSlashSpell extends AbstractSpell {
             .setCooldownSeconds(20)
             .build();
 
-    public UpstandingSlashSpell() {
+    public LevelSlashSpell() {
         this.manaCostPerLevel = 15;
         this.baseSpellPower = 20;
         this.spellPowerPerLevel = 6;
@@ -82,25 +82,10 @@ public class UpstandingSlashSpell extends AbstractSpell {
         return CastType.LONG;
     }
 
-//    @Override
-//    public int getEffectiveCastTime(int spellLevel, @Nullable LivingEntity entity) {
-//        int base = getCastTime(spellLevel);
-//
-//        if (entity != null && entity.hasEffect(MahouEffects.MANIFESTED.get())) {
-//            // each level is reducing 20%
-//            int amplifier = entity.getEffect(MahouEffects.MANIFESTED.get()).getAmplifier();
-//            double multiplier = 1.0 - (0.2 * (amplifier + 1));
-//            return (int) Math.max(1, base * multiplier); // Not 0
-//        }
-//
-//        return base;
-//    }
-
     public ResourceLocation getSpellResource() {
         return SPELL_ID;
     }
-
-    //    change it to MahouEffects.MANIFESTED later
+    
     public boolean canBeInterrupted(@Nullable Player player) {
         return player == null || !player.hasEffect(MobEffectRegistry.FORTIFY.get());
     }

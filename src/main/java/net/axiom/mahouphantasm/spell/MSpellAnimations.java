@@ -8,9 +8,9 @@ import net.minecraft.resources.ResourceLocation;
 public class MSpellAnimations {
     public static ResourceLocation ANIMATION_RESOURCE = ResourceLocation.fromNamespaceAndPath(MahouPhantasm.MOD_ID, "animation");
 
-    public static final AnimationHolder MIMICRY_UPSWING = new AnimationHolder(MahouPhantasm.MOD_ID + ":mimicry_upswing", true);
-    public static final AnimationHolder MIMICRY_SLASH = new AnimationHolder(MahouPhantasm.MOD_ID + ":mimicry_slash", true);
-    public static final AnimationHolder SIMPLE_SWORD_UPWARD = new AnimationHolder(MahouPhantasm.MOD_ID + ":sword_upward", true);
+    public static final AnimationHolder UPSTANDING_SLASH_UPSWING = new AnimationHolder(MahouPhantasm.MOD_ID + ":upstanding_slash_upswing", true);
+    public static final AnimationHolder UPSTANDING_SLASH_FINISH = new AnimationHolder(MahouPhantasm.MOD_ID + ":upstanding_slash_finish", true);
+//    public static final AnimationHolder SWORD_UPWARD = new AnimationHolder(MahouPhantasm.MOD_ID + ":sword_upward", true);
 
     public MSpellAnimations() {
     }

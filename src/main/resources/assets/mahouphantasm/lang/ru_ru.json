@@ -3,10 +3,12 @@
   "item.mahouphantasm.waterloosaber": "Сабля Ватерлоо",
   "item.mahouphantasm.mimicry": "Мимикрия",
 
-  "item.mahouphantasm.mimicry_part": "Мимикрирующий Кусок",
+  "item.mahouphantasm.mimicry_part": "Мимикрирующая Масса",
 
   "spell.mahouphantasm.upstanding_slash": "Вертикальный Разрез",
   "spell.mahouphantasm.blood_boil": "Вскипание крови",
+
+  "ui.mahouphantasm.returned_damage": "%d%% Возвращённый урон",
 
   "school.mahouphantasm.redmist": "Красный Туман",
 
