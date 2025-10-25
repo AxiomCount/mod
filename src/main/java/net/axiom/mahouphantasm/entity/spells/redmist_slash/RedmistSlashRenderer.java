@@ -27,8 +27,7 @@ public class RedmistSlashRenderer extends EntityRenderer<RedmistSlash> {
     }
 
     @Override
-    public void render(RedmistSlash entity, float yaw, float partialTicks,
-                       PoseStack poseStack, MultiBufferSource bufferSource, int light) {
+    public void render(RedmistSlash entity, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int light) {
         poseStack.pushPose();
         poseStack.mulPose(Axis.YP.rotationDegrees(90.0F - entity.getYRot()));
         poseStack.mulPose(Axis.ZP.rotationDegrees(entity.getXRot()));
@@ -46,8 +45,7 @@ public class RedmistSlashRenderer extends EntityRenderer<RedmistSlash> {
         super.render(entity, yaw, partialTicks, poseStack, bufferSource, light);
     }
 
-    private void drawSlash(PoseStack.Pose pose, RedmistSlash entity,
-                           MultiBufferSource bufferSource, float width, boolean mirrored) {
+    private void drawSlash(PoseStack.Pose pose, RedmistSlash entity, MultiBufferSource bufferSource, float width, boolean mirrored) {
         Matrix4f poseMatrix = pose.pose();
         Matrix3f normalMatrix = pose.normal();
         VertexConsumer consumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(getTextureLocation(entity)));

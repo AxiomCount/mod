@@ -2,7 +2,7 @@ package net.axiom.mahouphantasm;
 
 import com.mojang.logging.LogUtils;
 import net.axiom.mahouphantasm.block.MahouBlocks;
-import net.axiom.mahouphantasm.entity.MahouEntityRegistry;
+import net.axiom.mahouphantasm.entity.EntityRegistry;
 import net.axiom.mahouphantasm.item.MahouCreativeTabs;
 import net.axiom.mahouphantasm.item.MahouItems;
 import net.axiom.mahouphantasm.registries.MahouSounds;
@@ -23,7 +23,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
+
 @Mod(MahouPhantasm.MOD_ID)
 public class MahouPhantasm {
     public static final String MOD_ID = "mahouphantasm";
@@ -39,10 +39,8 @@ public class MahouPhantasm {
         MahouSchools.register(modEventBus);
         MahouSounds.register(modEventBus);
         MahouEffects.register(modEventBus);
-        MahouEntityRegistry.register(modEventBus);
+        EntityRegistry.register(modEventBus);
 //        MahouFluids.register();
-
-        // ISSAlchemistCauldronRegistrar.register(modEventBus);
 
 
         // Register the commonSetup method for modloading
@@ -56,18 +54,15 @@ public class MahouPhantasm {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
     }
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent

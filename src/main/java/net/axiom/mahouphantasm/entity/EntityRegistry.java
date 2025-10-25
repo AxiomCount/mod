@@ -11,12 +11,12 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class MahouEntityRegistry {
+public class EntityRegistry {
     private static final DeferredRegister<EntityType<?>> ENTITIES;
 
     public static final RegistryObject<EntityType<RedmistSlash>> REDMISTSLASH;
 
-    public MahouEntityRegistry() {
+    public EntityRegistry() {
     }
 
     public static void register(IEventBus eventBus) {

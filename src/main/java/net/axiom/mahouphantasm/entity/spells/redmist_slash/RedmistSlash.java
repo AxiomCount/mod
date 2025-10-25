@@ -1,7 +1,7 @@
 package net.axiom.mahouphantasm.entity.spells.redmist_slash;
 
 import io.redspace.ironsspellbooks.entity.spells.AoeEntity;
-import net.axiom.mahouphantasm.entity.MahouEntityRegistry;
+import net.axiom.mahouphantasm.entity.EntityRegistry;
 
 import java.util.Optional;
 
@@ -32,7 +32,7 @@ public class RedmistSlash extends AoeEntity {
     }
 
     public RedmistSlash(Level level, boolean mirrored, boolean vertical) {
-        this(MahouEntityRegistry.REDMISTSLASH.get(), level);
+        this((EntityType) EntityRegistry.REDMISTSLASH.get(), level);
         this.getEntityData().set(DATA_MIRRORED, mirrored);
         this.getEntityData().set(DATA_VERTICAL, vertical);
     }

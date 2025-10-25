@@ -36,8 +36,6 @@ import java.util.Optional;
 public class UpstandingSlashSpell extends AbstractSpell {
     private static final ResourceLocation SPELL_ID = new ResourceLocation(MahouPhantasm.MOD_ID, "upstanding_slash");
 
-
-    @Override
     public List<MutableComponent> getUniqueInfo(int spellLevel, LivingEntity caster) {
         float damage = getSpellPower(spellLevel, caster);
         return List.of(
@@ -70,22 +68,18 @@ public class UpstandingSlashSpell extends AbstractSpell {
         };
     }
 
-    @Override
     public boolean canBeCraftedBy(Player player) {
         return true;
     }
 
-    @Override
     public boolean allowLooting() {
         return false;
     }
 
-    @Override
     public DefaultConfig getDefaultConfig() {
         return defaultConfig;
     }
 
-    @Override
     public CastType getCastType() {
         return CastType.LONG;
     }
@@ -104,41 +98,33 @@ public class UpstandingSlashSpell extends AbstractSpell {
 //        return base;
 //    }
 
-    @Override
     public ResourceLocation getSpellResource() {
         return SPELL_ID;
     }
 
     //    change it to MahouEffects.MANIFESTED later
-    @Override
     public boolean canBeInterrupted(@Nullable Player player) {
         return player == null || !player.hasEffect(MobEffectRegistry.FORTIFY.get());
     }
 
-    @Override
     public int getRecastCount(int spellLevel, @Nullable LivingEntity entity) { return 2; }
 
-    @Override
     public Optional<SoundEvent> getCastStartSound() {
         return Optional.of(MahouSounds.DICE.get());
     }
 
-    @Override
     public Optional<SoundEvent> getCastFinishSound() {
         return Optional.of(SoundRegistry.BLOOD_EXPLOSION.get());
     }
 
-    @Override
     public AnimationHolder getCastStartAnimation() {
         return MSpellAnimations.MIMICRY_UPSWING;  // SpellAnimations.OVERHEAD_MELEE_SWING_ANIMATION;
     }
 
-    @Override
     public AnimationHolder getCastFinishAnimation() {
         return MSpellAnimations.MIMICRY_SLASH;
     }
 
-    @Override
     public void onCast(Level level, int spellLevel, LivingEntity caster, CastSource castSource, MagicData playerMagicData) {
         if (!playerMagicData.getPlayerRecasts().hasRecastForSpell(getSpellId()) & playerMagicData.getMana() > this.baseManaCost + (this.manaCostPerLevel * (spellLevel - 1)))
         {
@@ -200,6 +186,15 @@ public class UpstandingSlashSpell extends AbstractSpell {
                 );
             }
         }
+        boolean mirrored = playerMagicData.getCastingEquipmentSlot().equals(SpellSelectionManager.OFFHAND);
+        boolean vertical = true;
+        RedmistSlash slash = new RedmistSlash(level, mirrored, vertical);
+        slash.moveTo(hitboxCenter.x, hitboxCenter.y, hitboxCenter.z);
+        slash.setYRot(caster.getYRot());
+        slash.setXRot(caster.getXRot());
+        level.addFreshEntity(slash);
+
+        super.onCast(level, spellLevel, caster, castSource, playerMagicData);
     }
 }
 
